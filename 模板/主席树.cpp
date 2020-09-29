@@ -45,34 +45,3 @@ int qry(int rt, int l, int r, int p)
     if (p <= mid) return qry(seg[rt].ls, l, mid, p);
     else return qry(seg[rt].rs, mid+1, r, p);
 }
-
-int main()
-{
-IOS;
-#ifdef LOCAL
-    freopen("test.in", "r", stdin);
-    // freopen("test.out", "w", stdout);
-#endif
-    scanf("%d%d", &n, &m);
-    for (int i = 1;i <= n; ++i) scanf("%d", &a[i]);
-    rot[0] = build(0, 1, n);
-    int v, op, p, val;
-    for (int i = 1;i <= m; ++i)
-    {
-        scanf("%d%d%d", &v, &op, &p);
-        if (op == 1)
-        {
-            scanf("%d", &val);
-            rot[i] = upd(rot[v], 1, n, p, val);
-        }
-        else
-        {
-            int ans;
-            printf("%d\n", ans = qry(rot[v], 1, n, p));
-            rot[i] = rot[v];
-        }
-        
-    }
-
-return 0;
-}
